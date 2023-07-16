@@ -148,11 +148,11 @@ $conn->close();
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [{
           label: 'Year 2022',
-          data: year2022Profit1,
+          data: <?= json_encode($year2022Profit) ?>,
           backgroundColor: 'rgba(54, 162, 235, 0.5)',
         }, {
           label: 'Year 2023',
-          data: year2023Profit1,
+          data: <?= json_encode($year2023Profit) ?>,
           backgroundColor: 'rgba(255, 99, 132, 0.5)',
         }]
       },
