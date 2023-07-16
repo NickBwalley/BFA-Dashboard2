@@ -51,7 +51,7 @@
     <strong>
      Visualization Type: Line Graph<br>
      Using Line graph to effectively display the trend of customer satisfaction index over time, allowing you to track changes and compare the index between different periods<br>
-      KPI2b (lagging): <u> Complaints Received and Resolved during the Year</u><br>
+      KPI2b (lagging): <u> Customer Satisfaction Index for the Year</u><br>
     </strong>
     </div>
     <div class="card-body"><canvas id="KPI2b"></canvas></div>
@@ -109,30 +109,55 @@
         } 
       }
     });
-      /* KPI2b */
-          // Get the customer satisfaction data from the PHP variable
-    const customerSatisfactionData = <?php echo json_encode($result->fetch_all(MYSQLI_ASSOC)); ?>;
+    <?php
+        include 'dbconfig.php';
 
-    // Extract labels and data arrays from the customer satisfaction data
-    const labels = customerSatisfactionData.map(record => `${record.year}-${record.month}`);
-    const data = customerSatisfactionData.map(record => record.satisfaction_index);
+          // Create connection
+          $conn = new mysqli($dbservername, $dbusername, $dbpassword, $dbname);
+        // Check connection
+          if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+          }
 
-    // Create the Line Graph
-    const customerSatisfactionLineGraph = document.getElementById('KPI2b');
-    new Chart(customerSatisfactionLineGraph, {
+        // Get data from the 'profit_trends' table
+        $query = "SELECT date_column, customer_satisfaction_index FROM customer_satisfaction";
+        $result = $conn->query($query);
+
+        // Initialize arrays to store data
+        $users = [];
+        $satisfactionIndex = [];
+
+        // Process the result set
+        while ($row = mysqli_fetch_assoc($result)) {
+          $users[] = $row['date_column'];
+          $satisfactionIndex[] = $row['customer_satisfaction_index'];
+        }
+
+        // Close the database connection
+        $conn->close();
+        ?>
+      // Get the canvas element
+    const customerSatisfactionChart = document.getElementById('KPI2b');
+    
+    // Retrieve the customer satisfaction data from the database or use static values
+    const users = <?php echo json_encode($users); ?>; // Array of user IDs
+    const satisfactionIndex = <?php echo json_encode($satisfactionIndex); ?>; // Array of customer satisfaction indices
+    
+    // Create the line graph
+    new Chart(customerSatisfactionChart, {
       type: 'line',
       data: {
-        labels: labels,
+        labels: users,
         datasets: [{
           label: 'Customer Satisfaction Index',
-          data: complaintsData.map(complaint => ({
-            x: complaint.complaint_resolved,
-            y: complaint.complaint_received,
-            
-          })),
-          borderWidth: 2,
-          borderColor: 'rgba(9, 50, 219, 0.75)',
-          backgroundColor: 'rgba(9, 50, 219, 0.1)',
+          data: satisfactionIndex,
+          borderColor: 'rgba(54, 162, 235, 1)',
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          pointStyle: 'circle',
+          pointRadius: 4,
+          pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+          pointBorderColor: 'rgba(255, 255, 255, 1)',
+          pointBorderWidth: 2,
           fill: false
         }]
       },
@@ -148,7 +173,7 @@
           x: {
             title: {
               display: true,
-              text: 'Time'
+              text: 'Date Column'
             }
           }
         },
@@ -158,7 +183,7 @@
           },
           legend: {
             position: 'bottom',
-            labels : {
+            labels: {
               usePointStyle: true
             }
           }

@@ -11,6 +11,7 @@
   $sql = "CALL `PROCESSINGMANUFACTURE`();";
   $result = $conn->query($sql);
 ?>
+
 <div class="col-md-6 my-1">
     <div class="card">
     <div class="card-body text-center">
