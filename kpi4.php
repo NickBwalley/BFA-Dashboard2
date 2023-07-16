@@ -135,7 +135,7 @@ $conn->close();
 
  /* KPI4b */
 const kpi4b = document.getElementById('KPI4b');
-const target1 = 90; // Set the target value
+const target1 = 75; // Set the target value
 
 new Chart(kpi4b, {
   type: 'line',

@@ -44,8 +44,8 @@
   <div class="card">
     <div class="card-body text-center">
       <strong>
-        Visualization Type: Polar Area Graph<br>
-        Using Polar Area Graph<br>
+        Visualization Type: Bar Graph<br>
+        Using a bar graph <br>
         KPI3b (lagging): <u>Quality of the Processed Tea Leaves</u><br>
         <!-- Customer Satisfaction Index for the Year = <?= number_format($salesPerProduct_target,2,".",",") ?> <br>
         Current Year = <?= $currentYear_top5SellingProducts ?> -->
@@ -61,56 +61,67 @@
 
 <script>
     // Get the processing data from the PHP variable
-    const processingData = <?php echo json_encode($result->fetch_all(MYSQLI_ASSOC)); ?>;
+const processingData = <?php echo json_encode($result->fetch_all(MYSQLI_ASSOC)); ?>;
 
-    // Extract labels and data arrays from the processing data
-    const procinglabels = processingData.map(record => record.category);
-    const processingDataArray = processingData.map(record => record.average_processing_time);
+// Extract labels and data arrays from the processing data
+const procinglabels = processingData.map(record => record.category);
+const processingDataArray = processingData.map(record => record.average_processing_time);
 
-    // Create the Bar Graph
-    const processingTimeBarGraph = document.getElementById('KPI3a');
-    new Chart(processingTimeBarGraph, {
-      type: 'bar',
-      data: {
-        labels: procinglabels,
-        datasets: [{
-          label: 'Average Processing Time',
-          data: processingDataArray,
-          backgroundColor: 'rgb(54, 162, 235)'
-        }]
+// Create the Bar Graph
+const processingTimeBarGraph = document.getElementById('KPI3a');
+new Chart(processingTimeBarGraph, {
+  type: 'bar',
+  data: {
+    labels: procinglabels,
+    datasets: [{
+      label: 'Average Processing Time',
+      data: processingDataArray,
+      backgroundColor: 'rgb(54, 162, 235)'
+    }, {
+      type: 'line',
+      label: 'Target',
+      data: [9.5, 9.5, 9.5, 9.5, 9.5, 9.5, 9.5], // Add target data (9.5 for all categories)
+      borderWidth: 2,
+      borderColor: 'rgba(255, 99, 132, 1)',
+      fill: false
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: 'Average Processing Time'
+        },
+        ticks: {
+          min: 0,
+          max: 10
+        }
       },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: 'Average Processing Time'
-            }
-          },
-          x: {
-            title: {
-              display: true,
-              text: 'Category'
-            }
-          }
-        },
-        plugins: {
-          tooltip: {
-            intersect: false
-          },
-          legend: {
-            position: 'bottom',
-            labels : {
-              usePointStyle: true
-            }
-          }
-        },
-        interaction: {
-          mode: 'index'
+      x: {
+        title: {
+          display: true,
+          text: 'Category'
         }
       }
-    });
+    },
+    plugins: {
+      tooltip: {
+        intersect: false
+      },
+      legend: {
+        position: 'bottom',
+        labels : {
+          usePointStyle: true
+        }
+      }
+    },
+    interaction: {
+      mode: 'index'
+    }
+  }
+});
    // Retrieve the data from the result of the stored procedure
    <?php
     $data = array();
@@ -119,7 +130,6 @@
     }
   ?>
 
-  // create a line graph. 
   // Create the Line Graph
 const processingTimeLineGraph = document.getElementById('KPI3b');
 new Chart(processingTimeLineGraph, {
@@ -131,6 +141,13 @@ new Chart(processingTimeLineGraph, {
       data: processingDataArray,
       borderColor: 'rgb(54, 162, 235)',
       fill: false
+    }, {
+      type: 'line',
+      label: 'Target',
+      data: [9.5, 9.5, 9.5, 9.5, 9.5, 9.5, 9.5], // Add target data (9.5 for all categories)
+      borderWidth: 2,
+      borderColor: 'rgba(255, 99, 132, 1)',
+      fill: false
     }]
   },
   options: {
@@ -140,6 +157,10 @@ new Chart(processingTimeLineGraph, {
         title: {
           display: true,
           text: 'Customer Rating'
+        },
+        ticks: {
+          min: 0,
+          max: 10
         }
       },
       x: {
