@@ -31,8 +31,8 @@ $conn->close();
       Visualization Type: Radar chart<br>
       Using Radar Chart to compare the distribution of training hours across different training topics or departments<br>
       KPI4a (leading): <u> Employee Training Hours per Year </u><br>
-      Customer Satisfaction Index for the Year = <?= number_format($salesPerProduct_target,2,".",",") ?> <br>
-      Current Year = <?= $currentYear_top5SellingProducts ?>
+      <!-- Customer Satisfaction Index for the Year = <?= number_format($salesPerProduct_target,2,".",",") ?> <br>
+      Current Year = <?= $currentYear_top5SellingProducts ?> -->
     </strong>
     </div>
     <div class="card-body"><canvas id="KPI4a"></canvas></div>
@@ -73,8 +73,8 @@ $conn->close();
     Visualization Type: Line Graph<br>
     to track the improvement in farm productivity over time, allowing for easy comparison and identification of trends<br>
       KPI4a (lagging): <u>  Improvement in Farm Productivity</u><br>
-      Customer Satisfaction Index for the Year = <?= number_format($salesPerProduct_target,2,".",",") ?> <br>
-      Current Year = <?= $currentYear_top5SellingProducts ?>
+      <!-- Customer Satisfaction Index for the Year = <?= number_format($salesPerProduct_target,2,".",",") ?> <br>
+      Current Year = <?= $currentYear_top5SellingProducts ?> -->
     </strong>
     </div>
     <div class="card-body"><canvas id="KPI4b"></canvas></div>
