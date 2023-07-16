@@ -119,40 +119,88 @@
     }
   ?>
 
-  // Create the polar area chart
-  const kpi3b = document.getElementById('KPI3b');
-  new Chart(kpi3b, {
-    type: 'polarArea',
-    data: {
-      labels: <?php echo json_encode(array_keys($data)); ?>,
-      datasets: [{
-        label: 'Quality',
-        data: <?php echo json_encode(array_values($data)); ?>,
-        backgroundColor: [
-          'rgb(255, 99, 132)',
-          'rgb(54, 162, 235)',
-          'rgb(255, 205, 86)'
-        ],
-        hoverOffset: 4
-      }]
-    },
-    options: {
-      plugins: {
-        tooltip: {
-          intersect: false
-        },
-        legend: {
-          position: 'bottom',
-          labels: {
-            usePointStyle: true
-          }
+  // create a line graph. 
+  // Create the Line Graph
+const processingTimeLineGraph = document.getElementById('KPI3b');
+new Chart(processingTimeLineGraph, {
+  type: 'line',
+  data: {
+    labels: procinglabels,
+    datasets: [{
+      label: 'Quality of the Tea',
+      data: processingDataArray,
+      borderColor: 'rgb(54, 162, 235)',
+      fill: false
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: 'Customer Rating'
         }
       },
-      interaction: {
-        mode: 'index'
+      x: {
+        title: {
+          display: true,
+          text: 'Category'
+        }
       }
+    },
+    plugins: {
+      tooltip: {
+        intersect: false
+      },
+      legend: {
+        position: 'bottom',
+        labels: {
+          usePointStyle: true
+        }
+      }
+    },
+    interaction: {
+      mode: 'index'
     }
-  });
+  }
+});
+
+
+  // Create the polar area chart
+  // const kpi3b = document.getElementById('KPI3b');
+  // new Chart(kpi3b, {
+  //   type: 'line',
+  //   data: {
+  //     labels: <?php echo json_encode(array_keys($data)); ?>,
+  //     datasets: [{
+  //       label: 'Quality',
+  //       data: <?php echo json_encode(array_values($data)); ?>,
+  //       backgroundColor: [
+  //         'rgb(255, 99, 132)',
+  //         'rgb(54, 162, 235)',
+  //         'rgb(255, 205, 86)'
+  //       ],
+  //       hoverOffset: 4
+  //     }]
+  //   },
+  //   options: {
+  //     plugins: {
+  //       tooltip: {
+  //         intersect: false
+  //       },
+  //       legend: {
+  //         position: 'bottom',
+  //         labels: {
+  //           usePointStyle: true
+  //         }
+  //       }
+  //     },
+  //     interaction: {
+  //       mode: 'index'
+  //     }
+  //   }
+  // });
 
       
 </script>

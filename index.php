@@ -21,25 +21,25 @@
         <br />
         <strong>Kaplan and Norton’s Balanced Scorecard</strong>
           <ul>
-            <li>Financial Perspective (KPI1a and KPI1b)
+            <li><strong>Financial Perspective (KPI1a and KPI1b)</strong>
               <ul>
               <li>KPI1a (leading): Forecasted Sales Growth Rate for the Year</li>
               <li>KPI1b (lagging): Increased profit Margin Percentage for the Year</li>
               </ul>
             </li>
-            <li>Customer Perspective (KPI2a and KPI2b)
+            <li><strong>Customer Perspective (KPI2a and KPI2b)</strong>
             <ul>
               <li>KPI2a (leading):Number of Complaints Received and Resolved during the Year </li>
               <li>KPI2b (lagging): Customer Satisfaction Index for the Year</li>
               </ul>
             </li>
-            <li>Internal Business Processes Perspective (KPI3a and KPI3b)
+            <li><strong>Internal Business Processes Perspective (KPI3a and KPI3b)</strong>
             <ul>
               <li>KPI3a (leading): Average Time for Tea Leaves Processing</li>
               <li>KPI3b (lagging): Quality of the processed tea leaves</li>
               </ul>
             </li>
-            <li>Innovation and Learning Perspective (KPI4a and KPI4b)
+            <li><strong>Innovation and Learning Perspective (KPI4a and KPI4b)</strong>
             <ul>
               <li>KPI4a (leading): Employee Training Hours per Year</li>
               <li>KPI4b (lagging):  Improvement in farm productivity</li>
@@ -158,7 +158,7 @@
   <div class="col-md-3 my-1">
         <div class="card">
             <div class="card-body text-center">
-              <strong>Total Time for Processing</strong><hr>
+              <strong>Total Processing Time for Tea</strong><hr>
               <h1>
                 <?= humanize_time($totalProcessingTime) ?>
               </h1>
@@ -168,7 +168,7 @@
   <div class="col-md-3 my-1">
         <div class="card">
             <div class="card-body text-center">
-              <strong>Total Time for Traning</strong><hr>
+              <strong>Total Time for Traning Employees</strong><hr>
               <h1>
                 <?= humanize_time($trainingHours) ?>
               </h1>
