@@ -78,60 +78,71 @@ $conn->close();
     // const year2022Profit = [500000, 750000, 650000, 900000, 1000000, 1300000, 1200000, 1900000, 2200000, 2500000, 2300000, 3100000];
     // const year2023Profit = [1000000, 1300000, 2000000, 1900000, 2100000, 3500000, 3200000];
     
-    // Create the line graph
-    new Chart(profitTrendsChart, {
-      type: 'line',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          label: 'Year 2022',
-          data: <?= json_encode($year2022Profit) ?>,
-          borderColor: 'rgba(54, 162, 235, 1)',
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-          pointStyle: 'rectRounded',
-          fill: false
-        }, {
-          label: 'Year 2023',
-          data: <?= json_encode($year2023Profit) ?>,
-          borderColor: 'rgba(255, 99, 132, 1)',
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          pointStyle: 'rectRounded',
-          fill: false
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: 'Amount'
-            },
-            ticks: {
-              min: 100000,
-              max: 6000000
-            }
+    // Set the target value
+  const targetValue = 3000000;
+  
+  // Create the line graph
+  new Chart(profitTrendsChart, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [{
+        label: 'Year 2022',
+        data: <?= json_encode($year2022Profit) ?>,
+        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        pointStyle: 'rectRounded',
+        fill: false
+      }, {
+        label: 'Year 2023',
+        data: <?= json_encode($year2023Profit) ?>,
+        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        pointStyle: 'rectRounded',
+        fill: false
+      }, {
+        label: 'Target',
+        data: Array(12).fill(targetValue),
+        borderColor: 'rgba(0, 0, 0, 1)',
+        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+        pointStyle: 'line',
+        fill: false,
+        borderDash: [5, 5]
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Amount'
           },
-          x: {
-            title: {
-              display: true,
-              text: 'Months'
-            }
+          ticks: {
+            min: 100000,
+            max: 6000000
           }
         },
-        plugins: {
-          tooltip: {
-            intersect: false
-          },
-          legend: {
-            position: 'bottom',
-            labels: {
-              usePointStyle: true
-            }
+        x: {
+          title: {
+            display: true,
+            text: 'Months'
+          }
+        }
+      },
+      plugins: {
+        tooltip: {
+          intersect: false
+        },
+        legend: {
+          position: 'bottom',
+          labels: {
+            usePointStyle: true
           }
         }
       }
-    });
+    }
+  });
 
     // KPI1b: A BAR GRAPH REPRESENTATION FOR IT. 
     // Get the canvas element
@@ -142,51 +153,60 @@ $conn->close();
     const year2023Profit1 = [150000, 350000, 600000, 900000, 1250000, 1650000, 2100000, 2600000, 3200000, 3900000, 4700000, 5600000];
     
     // Create the bar graph
-    new Chart(profitTrendsChart1, {
-      type: 'bar',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          label: 'Year 2022',
-          data: <?= json_encode($year2022Profit) ?>,
-          backgroundColor: 'rgba(54, 162, 235, 0.5)',
-        }, {
-          label: 'Year 2023',
-          data: <?= json_encode($year2023Profit) ?>,
-          backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: 'Amount'
-            },
-            ticks: {
-              min: 100000,
-              max: 6000000
-            }
-          },
-          x: {
-            title: {
-              display: true,
-              text: 'Months'
-            }
-          }
+new Chart(profitTrendsChart1, {
+  type: 'bar',
+  data: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    datasets: [{
+      label: 'Year 2022',
+      data: <?= json_encode($year2022Profit) ?>,
+      backgroundColor: 'rgba(54, 162, 235, 0.5)',
+    }, {
+      label: 'Year 2023',
+      data: <?= json_encode($year2023Profit) ?>,
+      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+    }, {
+      label: 'Target',
+      data: Array(12).fill(3000000),
+      borderColor: 'rgba(0, 0, 0, 1)',
+      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+      type: 'line',
+      fill: false,
+      borderDash: [5, 5]
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: 'Amount'
         },
-        plugins: {
-          tooltip: {
-            intersect: false
-          },
-          legend: {
-            position: 'bottom',
-            labels: {
-              usePointStyle: true
-            }
-          }
+        ticks: {
+          min: 100000,
+          max: 6000000
+        }
+      },
+      x: {
+        title: {
+          display: true,
+          text: 'Months'
         }
       }
-    });
+    },
+    plugins: {
+      tooltip: {
+        intersect: false
+      },
+      legend: {
+        position: 'bottom',
+        labels: {
+          usePointStyle: true
+        }
+      }
+    }
+  }
+});
+
   </script>
