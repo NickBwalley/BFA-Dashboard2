@@ -137,60 +137,70 @@
         $conn->close();
         ?>
       // Get the canvas element
-    const customerSatisfactionChart = document.getElementById('KPI2b');
-    
-    // Retrieve the customer satisfaction data from the database or use static values
-    const users = <?php echo json_encode($users); ?>; // Array of user IDs
-    const satisfactionIndex = <?php echo json_encode($satisfactionIndex); ?>; // Array of customer satisfaction indices
-    
-    // Create the line graph
-    new Chart(customerSatisfactionChart, {
+const customerSatisfactionChart = document.getElementById('KPI2b');
+
+// Retrieve the customer satisfaction data from the database or use static values
+const users = <?php echo json_encode($users); ?>; // Array of user IDs
+const satisfactionIndex = <?php echo json_encode($satisfactionIndex); ?>; // Array of customer satisfaction indices
+const target3 = 8.0; // Target value
+
+// Create the line graph
+new Chart(customerSatisfactionChart, {
+  type: 'line',
+  data: {
+    labels: users,
+    datasets: [{
+      label: 'Customer Satisfaction Index',
+      data: satisfactionIndex,
+      borderColor: 'rgba(54, 162, 235, 1)',
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      pointStyle: 'circle',
+      pointRadius: 4,
+      pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+      pointBorderColor: 'rgba(255, 255, 255, 1)',
+      pointBorderWidth: 2,
+      fill: false
+    }, {
       type: 'line',
-      data: {
-        labels: users,
-        datasets: [{
-          label: 'Customer Satisfaction Index',
-          data: satisfactionIndex,
-          borderColor: 'rgba(54, 162, 235, 1)',
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-          pointStyle: 'circle',
-          pointRadius: 4,
-          pointBackgroundColor: 'rgba(54, 162, 235, 1)',
-          pointBorderColor: 'rgba(255, 255, 255, 1)',
-          pointBorderWidth: 2,
-          fill: false
-        }]
+      label: 'Target',
+      data: Array(satisfactionIndex.length).fill(target3),
+      borderWidth: 1.2,
+      fill: false,
+      borderColor: 'black',
+      pointRadius: 0,
+      pointStyle: 'line'
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: 'Customer Satisfaction Index'
+        }
       },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: 'Customer Satisfaction Index'
-            }
-          },
-          x: {
-            title: {
-              display: true,
-              text: 'Date Column'
-            }
-          }
-        },
-        plugins: {
-          tooltip: {
-            intersect: false
-          },
-          legend: {
-            position: 'bottom',
-            labels: {
-              usePointStyle: true
-            }
-          }
-        },
-        interaction: {
-          mode: 'index'
+      x: {
+        title: {
+          display: true,
+          text: 'Date Column'
         }
       }
-    });
+    },
+    plugins: {
+      tooltip: {
+        intersect: false
+      },
+      legend: {
+        position: 'bottom',
+        labels: {
+          usePointStyle: true
+        }
+      }
+    },
+    interaction: {
+      mode: 'index'
+    }
+  }
+});
 </script>
