@@ -72,7 +72,7 @@ $conn->close();
     <strong>
     Visualization Type: Line Graph<br>
     to track the improvement in farm productivity over time, allowing for easy comparison and identification of trends<br>
-      KPI4a (lagging): <u>  Improvement in Farm Productivity</u><br>
+      KPI4a (lagging): <u>  Improved Farm Productivity</u><br>
       <!-- Customer Satisfaction Index for the Year = <?= number_format($salesPerProduct_target,2,".",",") ?> <br>
       Current Year = <?= $currentYear_top5SellingProducts ?> -->
     </strong>

@@ -47,7 +47,7 @@
       <strong>
         Visualization Type: Bar Graph<br>
         Using a bar graph <br>
-        KPI3b (lagging): <u>Quality of the Processed Tea Leaves</u><br>
+        KPI3b (lagging): <u>Increased Quality of the Processed Tea Leaves</u><br>
         <!-- Customer Satisfaction Index for the Year = <?= number_format($salesPerProduct_target,2,".",",") ?> <br>
         Current Year = <?= $currentYear_top5SellingProducts ?> -->
       </strong>

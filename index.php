@@ -36,13 +36,13 @@
             <li><strong>Internal Business Processes Perspective (KPI3a and KPI3b)</strong>
             <ul>
               <li>KPI3a (leading): Average Time for Tea Leaves Processing</li>
-              <li>KPI3b (lagging): Quality of the processed tea leaves</li>
+              <li>KPI3b (lagging): Incresed Quality of the processed tea leaves</li>
               </ul>
             </li>
             <li><strong>Innovation and Learning Perspective (KPI4a and KPI4b)</strong>
             <ul>
               <li>KPI4a (leading): Employee Training Hours per Year</li>
-              <li>KPI4b (lagging):  Improvement in farm productivity</li>
+              <li>KPI4b (lagging):  Improved farm productivity</li>
               </ul>
             </li>
           </ul>
