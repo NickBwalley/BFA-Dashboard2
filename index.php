@@ -14,7 +14,8 @@
       <div class="col-md-2 bg-light bg-gradient">
         <h1>Business-Facing Analytics Dashboard</h1>
         <div style="color:#354E9D">
-          <strong>BBT4106 and BBT4206: Business Intelligence Project (and BI1 Take-Away CAT 2)<br /></strong>
+          <!-- <strong>BBT4106 and BBT4206: Business Intelligence Project (and BI1 Take-Away CAT 2)<br /></strong> -->
+          <strong>IS PROJECT DASHBOARD<br /></strong>
           <strong><br />Name: ACERS<br /></strong>
           <strong>Student ID: ACERS-GROUP<br /></strong>
         </div>
