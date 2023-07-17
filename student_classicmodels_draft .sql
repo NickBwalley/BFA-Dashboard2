@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2023 at 11:59 AM
+-- Generation Time: Jul 17, 2023 at 09:48 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -352,26 +352,25 @@ CREATE TABLE `customer_satisfaction` (
 --
 
 INSERT INTO `customer_satisfaction` (`id`, `date_column`, `customer_satisfaction_index`) VALUES
-(1, '2022-01-01', 4.5),
-(2, '2022-02-01', 4.7),
-(3, '2022-03-01', 4.6),
-(4, '2022-04-01', 4.8),
-(5, '2022-05-01', 4.9),
-(6, '2022-06-01', 4.4),
-(7, '2022-07-01', 4.3),
-(8, '2022-08-01', 4.2),
-(9, '2022-09-01', 4.6),
-(10, '2022-10-01', 4.5),
-(11, '2022-11-01', 4.7),
-(12, '2022-12-01', 4.9),
-(13, '2023-01-01', 4.8),
-(14, '2023-02-01', 4.7),
-(15, '2023-03-01', 4.6),
-(16, '2023-04-01', 4.9),
-(17, '2023-05-01', 4.5),
-(18, '2023-06-01', 4.7),
-(19, '2023-07-01', 4.4),
-(20, '2023-08-01', 4.6);
+(1, '2022-01-01', 6.5),
+(2, '2022-02-01', 5),
+(3, '2022-03-01', 6),
+(4, '2022-04-01', 5.5),
+(5, '2022-05-01', 6.5),
+(6, '2022-06-01', 6),
+(7, '2022-07-01', 8),
+(8, '2022-08-01', 7.5),
+(9, '2022-09-01', 7),
+(10, '2022-10-01', 8),
+(11, '2022-11-01', 7),
+(12, '2022-12-01', 10),
+(13, '2023-01-01', 5.5),
+(14, '2023-02-01', 6.5),
+(15, '2023-03-01', 7.5),
+(16, '2023-04-01', 10),
+(17, '2023-05-01', 8.5),
+(18, '2023-06-01', 9),
+(19, '2023-07-01', 8.5);
 
 -- --------------------------------------------------------
 
@@ -470,15 +469,47 @@ INSERT INTO `employeetraining` (`training_id`, `training_topic`, `training_hours
 --
 
 CREATE TABLE `farm_productivity` (
+  `id` int(11) NOT NULL,
   `year` int(11) DEFAULT NULL,
-  `productivity_index` decimal(10,2) DEFAULT NULL
+  `productivity_index` decimal(5,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `farm_productivity`
 --
 
-INSERT INTO `farm_productivity` (`year`, `productivity_index`) VALUES
+INSERT INTO `farm_productivity` (`id`, `year`, `productivity_index`) VALUES
+(1, 2010, 52.00),
+(2, 2011, 55.00),
+(3, 2012, 69.00),
+(4, 2013, 61.00),
+(5, 2014, 71.00),
+(6, 2015, 74.00),
+(7, 2016, 70.00),
+(8, 2017, 73.00),
+(9, 2018, 76.00),
+(10, 2019, 79.00),
+(11, 2020, 60.00),
+(12, 2021, 63.00),
+(13, 2022, 75.00),
+(14, 2023, 79.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `farm_productivity1`
+--
+
+CREATE TABLE `farm_productivity1` (
+  `year` int(11) DEFAULT NULL,
+  `productivity_index` decimal(10,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `farm_productivity1`
+--
+
+INSERT INTO `farm_productivity1` (`year`, `productivity_index`) VALUES
 (2010, 82.10),
 (2011, 84.50),
 (2012, 86.90),
@@ -4201,26 +4232,26 @@ CREATE TABLE `processing` (
 --
 
 INSERT INTO `processing` (`id`, `category_column`, `time_column`) VALUES
-(1, 'Category A', 10.50),
-(2, 'Category B', 8.70),
-(3, 'Category C', 9.20),
-(4, 'Category A', 11.20),
-(5, 'Category B', 9.80),
-(6, 'Category C', 10.30),
-(7, 'Category A', 12.10),
-(8, 'Category B', 10.50),
-(9, 'Category C', 11.70),
-(10, 'Category A', 9.60),
-(11, 'Category B', 11.30),
-(12, 'Category C', 10.80),
-(13, 'Category A', 11.50),
-(14, 'Category B', 9.90),
-(15, 'Category C', 10.60),
-(16, 'Category A', 10.90),
-(17, 'Category B', 11.10),
-(18, 'Category C', 9.40),
-(19, 'Category A', 10.30),
-(20, 'Category B', 9.70);
+(1, 'Category A', 10.00),
+(2, 'Category B', 8.00),
+(3, 'Category C', 8.00),
+(4, 'Category A', 8.00),
+(5, 'Category B', 8.00),
+(6, 'Category C', 9.00),
+(7, 'Category A', 9.00),
+(8, 'Category B', 7.00),
+(9, 'Category C', 10.00),
+(10, 'Category A', 10.00),
+(11, 'Category B', 9.00),
+(12, 'Category C', 10.00),
+(13, 'Category A', 8.00),
+(14, 'Category B', 7.00),
+(15, 'Category C', 9.00),
+(16, 'Category A', 7.00),
+(17, 'Category B', 8.00),
+(18, 'Category C', 9.00),
+(19, 'Category A', 7.00),
+(20, 'Category B', 6.00);
 
 -- --------------------------------------------------------
 
@@ -4403,8 +4434,8 @@ INSERT INTO `profit_trends` (`id`, `year_2022_profit`, `year_2023_profit`) VALUE
 (2, 750000, 1300000),
 (3, 650000, 2000000),
 (4, 900000, 1900000),
-(5, 1000000, 2100000),
-(6, 1300000, 3500000),
+(5, 1000000, 3100000),
+(6, 1300000, 4000000),
 (7, 1200000, 3200000),
 (8, 1900000, NULL),
 (9, 2200000, NULL),
@@ -4488,6 +4519,12 @@ ALTER TABLE `employeetraining`
   ADD PRIMARY KEY (`training_id`);
 
 --
+-- Indexes for table `farm_productivity`
+--
+ALTER TABLE `farm_productivity`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `offices`
 --
 ALTER TABLE `offices`
@@ -4547,6 +4584,12 @@ ALTER TABLE `qualityprocessed`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `farm_productivity`
+--
+ALTER TABLE `farm_productivity`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `profit_trends`

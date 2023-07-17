@@ -179,7 +179,7 @@
 
     <!-- Start of KPI DIVs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <?php include 'kpi1-draft.php'; ?> 
+    <?php include 'kpi1.php'; ?> 
     <?php include 'kpi2.php'; ?>
     <?php include 'kpi3.php'; ?>
     <?php include 'kpi4.php'; ?>
